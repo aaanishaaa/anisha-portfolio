@@ -77,14 +77,14 @@ export default function Window() {
           <div className="w-12 h-12 bg-purple-100 border-2 border-purple-300 rounded-lg flex items-center justify-center shadow-sm">
             <Settings className="w-6 h-6 text-purple-600" />
           </div>
-          <span className="text-xs text-gray-700 text-center">Spotinamp</span>
+          <span className="text-xs text-gray-700 text-center">Contact Me</span>
         </div>
 
         <div className="flex flex-col items-center space-y-2 w-20">
           <div className="w-12 h-12 ">
             <img src={folder} onClick={() => setShowFolderPopup(true)} />
           </div>
-          <span className="text-xs text-gray-700 text-center">Trevor's project</span>
+          <span className="text-xs text-gray-700 text-center">Anisha's project</span>
         </div>
       </div>
 
