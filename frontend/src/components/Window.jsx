@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { X, AlertCircle, Folder, Search, Palette, Settings } from 'lucide-react';
 import cat from '../assets/elements/cat.gif';
 import folder from '../assets/icons/folder.png';
-
+import me from '../assets/elements/me.png';
 export default function Window() {
   const [showCreativityError, setShowCreativityError] = useState(true);
   const [showConcentrationError, setShowConcentrationError] = useState(true);
@@ -46,8 +46,8 @@ export default function Window() {
           </div>
 
                     <div className="flex flex-col items-center space-y-2 w-20">
-            <div className="w-12 h-12 ">
-             <img src={folder}/>
+            <div className="w-12 h-12 mb-10 ">
+             <img src={me}/>
             </div>
             <span className="text-xs text-gray-700 text-center">About Me!</span>
           </div>
@@ -109,7 +109,7 @@ export default function Window() {
         ))}
       </div>
 
-      {/* Main Error Dialog */}
+      {/* Main Error Dialog
       {showCreativityError && (
         <div className="absolute top-32 left-1/2 transform -translate-x-1/2 bg-gray-100 border-2 border-gray-400 rounded-lg shadow-xl w-96">
           <div className="bg-gradient-to-r from-gray-200 to-gray-300 px-4 py-2 border-b-2 border-gray-400 flex items-center justify-between">
@@ -156,9 +156,9 @@ export default function Window() {
             </button>
           </div>
         </div>
-      )}
+      )} */}
 
-      {/* Concentration Error Dialog */}
+      {/* Concentration Error Dialog
       {showConcentrationError && (
         <div className="absolute top-72 left-1/2 transform -translate-x-1/2 translate-x-16 bg-yellow-50 border-2 border-yellow-400 rounded-lg shadow-xl w-80">
           <div className="bg-gradient-to-r from-yellow-100 to-yellow-200 px-4 py-2 border-b-2 border-yellow-400 flex items-center justify-between">
@@ -194,7 +194,7 @@ export default function Window() {
             </div>
           </div>
         </div>
-      )}
+      )} */}
 
     </div>
   );
