@@ -18,19 +18,12 @@ export default function Window() {
   };
 
   return (
-    <div className="w-full h-[90vh] relative overflow-hidden font-mono">
-      {/* Cloud Background */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-8 left-16 w-24 h-12 bg-white rounded-full opacity-80"></div>
-        <div className="absolute top-6 left-32 w-32 h-16 bg-white rounded-full opacity-70"></div>
-        <div className="absolute top-12 right-24 w-28 h-14 bg-white rounded-full opacity-75"></div>
-        <div className="absolute top-4 right-48 w-20 h-10 bg-white rounded-full opacity-65"></div>
-      </div>
+    <div className="w-full h-[90vh] relative overflow-hidden font-mono bg-[#fffaf1]">
         <div className="absolute left-8 top-8 space-y-6">
           {/* Folder Icon with Popup */}
           <div className="flex flex-col items-center space-y-2 w-20">
             <div
-            className="w-12 h-12 cursor-pointer"
+            className="w-12 h-12 cursor-pointer mb-3 hover:scale-110 transition-transform duration-300"
             onClick={() => setShowFolderPopup(true)}
             >
             <img src={folder} onClick={() => setShowFolderPopup(true)} />
@@ -39,14 +32,14 @@ export default function Window() {
           </div>
 
           <div className="flex flex-col items-center space-y-2 w-20">
-            <div className="w-12 h-12 ">
+            <div className="w-12 h-12 mb-3 hover:scale-110 transition-transform duration-300">
              <img src={folder}/>
             </div>
             <span className="text-xs text-gray-700 text-center">Projects</span>
           </div>
 
                     <div className="flex flex-col items-center space-y-2 w-20">
-            <div className="w-12 h-12 mb-10 ">
+            <div className="w-12 h-12 mb-12 hover:scale-110 transition-transform duration-300">
              <img src={me}/>
             </div>
             <span className="text-xs text-gray-700 text-center">About Me!</span>
@@ -65,7 +58,7 @@ export default function Window() {
                 <img
                   src={cat}
                   alt="Cato GIF"
-                  className="rounded-lg w-full h-full object-cover"
+                  className="rounded-lg w-full h-full object-cover "
                 />
                 </div>
               </div>
@@ -81,7 +74,7 @@ export default function Window() {
         </div>
 
         <div className="flex flex-col items-center space-y-2 w-20">
-          <div className="w-12 h-12 ">
+          <div className="w-12 h-12 mb-3 hover:scale-110 transition-transform duration-300">
             <img src={folder} onClick={() => setShowFolderPopup(true)} />
           </div>
           <span className="text-xs text-gray-700 text-center">Anisha's project</span>
