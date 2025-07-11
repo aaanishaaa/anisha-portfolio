@@ -3,6 +3,7 @@ import { X, AlertCircle, Folder, Search, Palette, Settings } from 'lucide-react'
 import cat from '../assets/elements/cat.gif';
 import folder from '../assets/icons/folder.png';
 import me from '../assets/elements/me.png';
+import HeroText from './HeroText';
 export default function Window() {
   const [showCreativityError, setShowCreativityError] = useState(true);
   const [showConcentrationError, setShowConcentrationError] = useState(true);
@@ -18,6 +19,8 @@ export default function Window() {
   };
 
   return (
+    <>
+            <HeroText/>
     <div className="w-full h-[90vh] relative overflow-hidden font-mono bg-[#fffaf1]">
         <div className="absolute left-8 top-8 space-y-6">
           {/* Folder Icon with Popup */}
@@ -190,5 +193,6 @@ export default function Window() {
       )} */}
 
     </div>
+    </>
   );
 }
