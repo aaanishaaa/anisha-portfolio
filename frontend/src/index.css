@@ -1,1 +1,7 @@
 @import "tailwindcss";
+
+/* Prevent scrolling */
+html, body {
+  overflow: hidden;
+  height: 100vh;
+}

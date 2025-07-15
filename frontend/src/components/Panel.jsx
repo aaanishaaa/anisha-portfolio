@@ -9,8 +9,7 @@ function Panel() {
   const [showTerminal, setShowTerminal] = React.useState(false);
 
   return (
-    <div className="flex items-center justify-center bg-white px-6 py-5 w-full shadow-lg border-t-4 border-white relative overflow-hidden">
-      {/* Curved background lines */}
+    <div className="flex items-center justify-center bg-white w-full shadow-lg py-6 border-t-4 border-white relative overflow-hidden">
       <div className="absolute inset-0 pointer-events-none">
         <svg className="w-full h-full" viewBox="0 0 800 80" preserveAspectRatio="none">
           <line x1="0" y1="15" x2="800" y2="15" stroke="#f97316" strokeWidth="8" className="opacity-70" />

@@ -3,16 +3,17 @@ import { X, AlertCircle, Folder, Search, Palette, Settings } from 'lucide-react'
 import cat from '../assets/elements/cat.gif';
 import folder from '../assets/icons/folder.png';
 import me from '../assets/elements/me.png';
-import HeroText from './HeroText';
+import AboutMe from './AboutMe';
 export default function Window() {
   const [showCreativityError, setShowCreativityError] = useState(true);
   const [showConcentrationError, setShowConcentrationError] = useState(true);
   const [showFolderPopup, setShowFolderPopup] = useState(false);
-  const [notifications, setNotifications] = useState([
-    { id: 1, user: 'Trevor McLient', message: 'I need everything ASAP homie...', type: 'UGH', avatar: '📧' },
-    { id: 2, user: 'Trevor McLient', message: '6 missing calls', type: 'GRR', avatar: '📞' },
-    { id: 3, user: 'Trevor McLient', message: '36 new messages', type: 'SRSLY?', avatar: 'TM' }
-  ]);
+  const [showAboutMe, setShowAboutMe] = useState(false);
+// const [notifications, setNotifications] = useState([
+//   { id: 1, user: 'Versus Bot', message: 'You’ve been challenged to a 1v1 DSA duel!', type: 'less go Battle Mode', avatar: '🕹️' },
+//   { id: 2, user: 'HeartByte Core', message: '99% model accuracy achieved on test set!', type: 'Niceee', avatar: '❤️' },
+//   { id: 3, user: 'Git Guardian', message: '4 pull requests need reviewing', type: 'Dev Stuff', avatar: '🐙' }
+// ]);
 
   const dismissNotification = (id) => {
     setNotifications(notifications.filter(n => n.id !== id));
@@ -20,13 +21,25 @@ export default function Window() {
 
   return (
     <>
-            <HeroText/>
-    <div className="w-full h-[90vh] relative overflow-hidden font-mono bg-[#fffaf1]">
-        <div className="absolute left-8 top-8 space-y-6">
+    <div className="w-full h-full relative overflow-hidden font-mono bg-[#fffaf1]">
+        {/* Background image with opacity */}
+        <div 
+          className="absolute inset-0 opacity-90"
+          style={{
+            backgroundImage: 'url(/bg.png)', 
+            backgroundSize: 'cover', 
+            backgroundPosition: 'center', 
+            backgroundRepeat: 'no-repeat'
+          }}
+        ></div>
+        
+        {/* Content layer */}
+        <div className="relative z-10">
+        <div className="absolute left-2 sm:left-4 md:left-8 top-4 sm:top-6 md:top-8 space-y-3 sm:space-y-4 md:space-y-6">
           {/* Folder Icon with Popup */}
-          <div className="flex flex-col items-center space-y-2 w-20">
+          <div className="flex flex-col items-center space-y-1 sm:space-y-2 w-12 sm:w-16 md:w-20">
             <div
-            className="w-12 h-12 cursor-pointer mb-3 hover:scale-110 transition-transform duration-300"
+            className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 cursor-pointer mb-2 sm:mb-3 hover:scale-110 transition-transform duration-300"
             onClick={() => setShowFolderPopup(true)}
             >
             <img src={folder} onClick={() => setShowFolderPopup(true)} />
@@ -34,30 +47,33 @@ export default function Window() {
             <span className="text-xs text-gray-700 text-center">Cato</span>
           </div>
 
-          <div className="flex flex-col items-center space-y-2 w-20">
-            <div className="w-12 h-12 mb-3 hover:scale-110 transition-transform duration-300">
+          <div className="flex flex-col items-center space-y-1 sm:space-y-2 w-12 sm:w-16 md:w-20">
+            <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 mb-2 sm:mb-3 hover:scale-110 transition-transform duration-300">
              <img src={folder}/>
             </div>
             <span className="text-xs text-gray-700 text-center">Projects</span>
           </div>
 
-                    <div className="flex flex-col items-center space-y-2 w-20">
-            <div className="w-12 h-12 mb-12 hover:scale-110 transition-transform duration-300">
+          <div className="flex flex-col items-center space-y-1 sm:space-y-2 w-12 sm:w-16 md:w-20">
+            <div 
+              className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 mb-6 sm:mb-8 md:mb-12 hover:scale-110 transition-transform duration-300 cursor-pointer"
+              onClick={() => setShowAboutMe(true)}
+            >
              <img src={me}/>
             </div>
-            <span className="text-xs text-gray-700 text-center">About Me!</span>
+            <span className="text-xs text-gray-700 text-center">About Me</span>
           </div>
         </div>
             {showFolderPopup && (
               <div className="fixed inset-0 z-50 flex items-center justify-center bg-orange-200 bg-opacity-5">
-                <div className="bg-white rounded-lg shadow-2xl p-6 relative w-[40rem] flex flex-col items-center">
+                <div className="bg-white rounded-lg shadow-2xl p-4 sm:p-6 relative w-[90%] max-w-xs sm:max-w-md md:max-w-lg lg:max-w-2xl flex flex-col items-center">
                 <button
                   className="absolute top-2 right-2 text-gray-500 hover:text-gray-700"
                   onClick={() => setShowFolderPopup(false)}
                 >
-                  <X className="w-10 h-10" />
+                  <X className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10" />
                 </button>
-                <div className="mb-4 font-bold text-lg">Cato Folder</div>
+                <div className="mb-3 sm:mb-4 font-bold text-sm sm:text-base md:text-lg">Cato Folder</div>
                 <img
                   src={cat}
                   alt="Cato GIF"
@@ -68,16 +84,16 @@ export default function Window() {
             )}
 
             {/* Right side icons */}
-      <div className="absolute right-8 top-32 space-y-6">
-        <div className="flex flex-col items-center space-y-2 w-20">
-          <div className="w-12 h-12 bg-purple-100 border-2 border-purple-300 rounded-lg flex items-center justify-center shadow-sm">
-            <Settings className="w-6 h-6 text-purple-600" />
+      <div className="absolute right-2 sm:right-4 md:right-8 top-20 sm:top-24 md:top-32 space-y-3 sm:space-y-4 md:space-y-6">
+        <div className="flex flex-col items-center space-y-1 sm:space-y-2 w-12 sm:w-16 md:w-20">
+          <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-purple-100 border-2 border-purple-300 rounded-lg flex items-center justify-center shadow-sm">
+            <Settings className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-purple-600" />
           </div>
           <span className="text-xs text-gray-700 text-center">Contact Me</span>
         </div>
 
-        <div className="flex flex-col items-center space-y-2 w-20">
-          <div className="w-12 h-12 mb-3 hover:scale-110 transition-transform duration-300">
+        <div className="flex flex-col items-center space-y-1 sm:space-y-2 w-12 sm:w-16 md:w-20">
+          <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 mb-2 sm:mb-3 hover:scale-110 transition-transform duration-300">
             <img src={folder} onClick={() => setShowFolderPopup(true)} />
           </div>
           <span className="text-xs text-gray-700 text-center">Anisha's project</span>
@@ -85,25 +101,25 @@ export default function Window() {
       </div>
 
       {/* Notifications */}
-      <div className="absolute top-8 right-8 space-y-3">
+      {/* <div className="absolute top-2 sm:top-4 md:top-8 right-2 sm:right-4 md:right-8 space-y-2 sm:space-y-3">
         {notifications.map((notification) => (
-          <div key={notification.id} className="bg-white border-2 border-gray-400 rounded-lg p-3 shadow-lg min-w-64 flex items-center space-x-3">
-            <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center text-sm">
+          <div key={notification.id} className="bg-white border-2 border-gray-400 rounded-lg p-2 sm:p-3 shadow-lg min-w-48 sm:min-w-56 md:min-w-64 flex items-center space-x-2 sm:space-x-3">
+            <div className="w-6 h-6 sm:w-8 sm:h-8 bg-gray-200 rounded-full flex items-center justify-center text-xs sm:text-sm">
               {notification.avatar}
             </div>
             <div className="flex-1">
-              <div className="font-bold text-sm">{notification.user}</div>
+              <div className="font-bold text-xs sm:text-sm">{notification.user}</div>
               <div className="text-xs text-gray-600">{notification.message}</div>
             </div>
             <button 
               onClick={() => dismissNotification(notification.id)}
-              className="bg-gray-200 hover:bg-gray-300 px-2 py-1 rounded text-xs font-bold"
+              className="bg-gray-200 hover:bg-gray-300 px-1 sm:px-2 py-1 rounded text-xs font-bold"
             >
               {notification.type}
             </button>
           </div>
         ))}
-      </div>
+      </div> */}
 
       {/* Main Error Dialog
       {showCreativityError && (
@@ -192,7 +208,13 @@ export default function Window() {
         </div>
       )} */}
 
-    </div>
+      {/* About Me Component */}
+      {showAboutMe && (
+        <AboutMe onClose={() => setShowAboutMe(false)} />
+      )}
+      
+      </div> {/* Close content layer */}
+    </div> {/* Close main container */}
     </>
   );
 }
