@@ -9,7 +9,7 @@ function Panel() {
   const [showTerminal, setShowTerminal] = React.useState(false);
 
   return (
-    <div className="flex items-center justify-center bg-white w-full shadow-lg py-6 border-t-4 border-white relative overflow-hidden">
+    <div className="flex items-center justify-center bg-white w-full shadow-lg py-3 sm:py-4 md:py-6 border-t-4 border-white relative overflow-hidden">
       <div className="absolute inset-0 pointer-events-none">
         <svg className="w-full h-full" viewBox="0 0 800 80" preserveAspectRatio="none">
           <line x1="0" y1="15" x2="800" y2="15" stroke="#f97316" strokeWidth="8" className="opacity-70" />
@@ -20,11 +20,11 @@ function Panel() {
       </div>
 
       {/* Main content */}
-      <div className="flex items-center space-x-10 relative z-20">
+      <div className="flex items-center space-x-2 sm:space-x-4 md:space-x-6 lg:space-x-10 relative z-20 w-full max-w-7xl px-2 sm:px-4">
         {/* Grid Icon */}
         <div className="flex-shrink-0">
-          <div className="bg-white p-3 rounded-md shadow-md hover:shadow-lg cursor-pointer border border-gray-200 hover:scale-110 transition-transform duration-200">
-            <svg className="w-6 h-6 text-orange-500" viewBox="0 0 24 24" fill="currentColor">
+          <div className="bg-white p-2 sm:p-3 rounded-md shadow-md hover:shadow-lg cursor-pointer border border-gray-200 hover:scale-110 transition-transform duration-200">
+            <svg className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-orange-500" viewBox="0 0 24 24" fill="currentColor">
               <rect x="2" y="2" width="8" height="8" rx="2" />
               <rect x="14" y="2" width="8" height="8" rx="2" />
               <rect x="2" y="14" width="8" height="8" rx="2" />
@@ -34,9 +34,9 @@ function Panel() {
         </div>
 
         {/* Search bar */}
-        <div className="flex items-center bg-white w-full max-w-[480px] px-5 py-3 rounded-full shadow-lg border-2 border-pink-200 hover:border-pink-300 transition-colors">
-          <div className="text-orange-400 mr-3">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+        <div className="hidden sm:flex items-center bg-white w-full max-w-[200px] sm:max-w-[300px] md:max-w-[400px] lg:max-w-[480px] px-3 sm:px-4 md:px-5 py-2 sm:py-3 rounded-full shadow-lg border-2 border-pink-200 hover:border-pink-300 transition-colors">
+          <div className="text-orange-400 mr-2 sm:mr-3">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 sm:h-5 sm:w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
               <circle cx="11" cy="11" r="8" />
               <line x1="21" y1="21" x2="16.65" y2="16.65" />
             </svg>
@@ -44,20 +44,20 @@ function Panel() {
           <input
             type="text"
             placeholder="Search ..."
-            className="flex-1 bg-transparent outline-none text-base text-gray-700 placeholder-gray-400 font-medium"
+            className="flex-1 bg-transparent outline-none text-sm sm:text-base text-gray-700 placeholder-gray-400 font-medium"
           />
         </div>
 
         {/* Retro Action Icons */}
-        <div>
-          <div className="flex items-center space-x-8 m-2">
-            <img src={cd} alt="CD Icon" className="w-18 h-10 hover:scale-150 transition-transform cursor-pointer" />
-            <img src={disk} alt="Disk Icon" className="w-18 h-10 hover:scale-150 transition-transform cursor-pointer" />
-            <img src={comp} alt="Computer Icon" className="w-18 h-10 hover:scale-150 transition-transform cursor-pointer" />
+        <div className="flex-shrink-0">
+          <div className="flex items-center space-x-2 sm:space-x-4 md:space-x-6 lg:space-x-8 m-1 sm:m-2">
+            <img src={cd} alt="CD Icon" className="w-6 h-4 sm:w-8 sm:h-6 md:w-12 md:h-8 lg:w-18 lg:h-10 hover:scale-125 sm:hover:scale-150 transition-transform cursor-pointer" />
+            <img src={disk} alt="Disk Icon" className="w-6 h-4 sm:w-8 sm:h-6 md:w-12 md:h-8 lg:w-18 lg:h-10 hover:scale-125 sm:hover:scale-150 transition-transform cursor-pointer" />
+            <img src={comp} alt="Computer Icon" className="w-6 h-4 sm:w-8 sm:h-6 md:w-12 md:h-8 lg:w-18 lg:h-10 hover:scale-125 sm:hover:scale-150 transition-transform cursor-pointer" />
             <img
               src={code}
               alt="Code Icon"
-              className="w-18 h-10 hover:scale-150 transition-transform cursor-pointer"
+              className="w-6 h-4 sm:w-8 sm:h-6 md:w-12 md:h-8 lg:w-18 lg:h-10 hover:scale-125 sm:hover:scale-150 transition-transform cursor-pointer"
               onClick={() => setShowTerminal(true)}
             />
           </div>
