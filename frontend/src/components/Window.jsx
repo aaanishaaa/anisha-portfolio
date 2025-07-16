@@ -4,11 +4,13 @@ import cat from '../assets/elements/cat.gif';
 import folder from '../assets/icons/folder.png';
 import me from '../assets/elements/me.png';
 import AboutMe from './AboutMe';
+import Projects from './Projects';
 export default function Window() {
   const [showCreativityError, setShowCreativityError] = useState(true);
   const [showConcentrationError, setShowConcentrationError] = useState(true);
   const [showFolderPopup, setShowFolderPopup] = useState(false);
   const [showAboutMe, setShowAboutMe] = useState(false);
+  const [showProjects, setShowProjects] = useState(false);
 // const [notifications, setNotifications] = useState([
 //   { id: 1, user: 'Versus Bot', message: 'You’ve been challenged to a 1v1 DSA duel!', type: 'less go Battle Mode', avatar: '🕹️' },
 //   { id: 2, user: 'HeartByte Core', message: '99% model accuracy achieved on test set!', type: 'Niceee', avatar: '❤️' },
@@ -47,18 +49,29 @@ export default function Window() {
             <span className="text-xs text-gray-700 text-center">Cato</span>
           </div>
 
+
           <div className="flex flex-col items-center space-y-1 sm:space-y-2 w-12 sm:w-16 md:w-20">
             <div 
-              className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 mb-6 sm:mb-8 md:mb-12 hover:scale-110 transition-transform duration-300 cursor-pointer"
+              className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 mb-8 sm:mb-10 md:mb-12 hover:scale-110 transition-transform duration-300 cursor-pointer"
               onClick={() => setShowAboutMe(true)}
             >
              <img src={me}/>
             </div>
-            <span className="text-xs text-gray-700 text-center">About Me</span>
+            <span className="text-xs text-gray-700  text-center">About Me</span>
+          </div>
+
+          <div className="flex flex-col items-center space-y-1 sm:space-y-2 w-12 sm:w-16 md:w-20">
+            <div 
+              className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 mb-1 sm:mb-2 md:mb-3 hover:scale-110 transition-transform duration-300 cursor-pointer"
+              onClick={() => setShowProjects(true)}
+            >
+             <img src={folder}/>
+            </div>
+            <span className="text-xs text-gray-700 text-center">Projects</span>
           </div>
         </div>
             {showFolderPopup && (
-              <div className="fixed inset-0 z-50 flex items-center justify-center bg-orange-200 bg-opacity-5">
+              <div className="fixed inset-0 z-50 flex items-center justify-center">
                 <div className="bg-white rounded-lg shadow-2xl p-4 sm:p-6 relative w-[90%] max-w-xs sm:max-w-md md:max-w-lg lg:max-w-2xl flex flex-col items-center">
                 <button
                   className="absolute top-2 right-2 text-gray-500 hover:text-gray-700"
@@ -83,13 +96,6 @@ export default function Window() {
             <Settings className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-purple-600" />
           </div>
           <span className="text-xs text-gray-700 text-center">Contact Me</span>
-        </div>
-
-        <div className="flex flex-col items-center space-y-1 sm:space-y-2 w-12 sm:w-16 md:w-20">
-          <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 mb-2 sm:mb-3 hover:scale-110 transition-transform duration-300">
-            <img src={folder} onClick={() => setShowFolderPopup(true)} />
-          </div>
-          <span className="text-xs text-gray-700 text-center">Anisha's project</span>
         </div>
       </div>
 
@@ -204,6 +210,11 @@ export default function Window() {
       {/* About Me Component */}
       {showAboutMe && (
         <AboutMe onClose={() => setShowAboutMe(false)} />
+      )}
+
+      {/* Projects Component */}
+      {showProjects && (
+        <Projects onClose={() => setShowProjects(false)} />
       )}
       
       </div> {/* Close content layer */}
