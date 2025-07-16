@@ -48,13 +48,6 @@ export default function Window() {
           </div>
 
           <div className="flex flex-col items-center space-y-1 sm:space-y-2 w-12 sm:w-16 md:w-20">
-            <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 mb-2 sm:mb-3 hover:scale-110 transition-transform duration-300">
-             <img src={folder}/>
-            </div>
-            <span className="text-xs text-gray-700 text-center">Projects</span>
-          </div>
-
-          <div className="flex flex-col items-center space-y-1 sm:space-y-2 w-12 sm:w-16 md:w-20">
             <div 
               className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 mb-6 sm:mb-8 md:mb-12 hover:scale-110 transition-transform duration-300 cursor-pointer"
               onClick={() => setShowAboutMe(true)}

@@ -51,13 +51,13 @@ function Panel() {
         {/* Retro Action Icons */}
         <div className="flex-shrink-0">
           <div className="flex items-center space-x-2 sm:space-x-4 md:space-x-6 lg:space-x-8 m-1 sm:m-2">
-            <img src={cd} alt="CD Icon" className="w-6 h-4 sm:w-8 sm:h-6 md:w-12 md:h-8 lg:w-18 lg:h-10 hover:scale-125 sm:hover:scale-150 transition-transform cursor-pointer" />
-            <img src={disk} alt="Disk Icon" className="w-6 h-4 sm:w-8 sm:h-6 md:w-12 md:h-8 lg:w-18 lg:h-10 hover:scale-125 sm:hover:scale-150 transition-transform cursor-pointer" />
-            <img src={comp} alt="Computer Icon" className="w-6 h-4 sm:w-8 sm:h-6 md:w-12 md:h-8 lg:w-18 lg:h-10 hover:scale-125 sm:hover:scale-150 transition-transform cursor-pointer" />
+            <img src={cd} alt="CD Icon" className="w-3 h-4 sm:w-6 sm:h-5 md:w-8 md:h-6 lg:w-12 lg:h-8 hover:scale-125 sm:hover:scale-150 transition-transform cursor-pointer" />
+            <img src={disk} alt="Disk Icon" className="w-3 h-4 sm:w-6 sm:h-5 md:w-8 md:h-6 lg:w-12 lg:h-8 hover:scale-125 sm:hover:scale-150 transition-transform cursor-pointer" />
+            <img src={comp} alt="Computer Icon" className="w-3 h-4 sm:w-6 sm:h-5 md:w-8 md:h-6 lg:w-12 lg:h-8 hover:scale-125 sm:hover:scale-150 transition-transform cursor-pointer" />
             <img
               src={code}
               alt="Code Icon"
-              className="w-6 h-4 sm:w-8 sm:h-6 md:w-12 md:h-8 lg:w-18 lg:h-10 hover:scale-125 sm:hover:scale-150 transition-transform cursor-pointer"
+              className="w-3 h-4 sm:w-6 sm:h-5 md:w-8 md:h-6 lg:w-12 lg:h-8 hover:scale-125 sm:hover:scale-150 transition-transform cursor-pointer"
               onClick={() => setShowTerminal(true)}
             />
           </div>
