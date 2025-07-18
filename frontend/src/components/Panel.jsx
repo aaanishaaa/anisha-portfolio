@@ -48,23 +48,45 @@ function Panel() {
           />
         </div>
 
-        {/* Retro Action Icons */}
-        <div className="flex-shrink-0">
-          <div className="flex items-center space-x-2 sm:space-x-4 md:space-x-6 lg:space-x-8 m-1 sm:m-2">
-            <img src={cd} alt="CD Icon" className="w-3 h-4 sm:w-6 sm:h-5 md:w-8 md:h-6 lg:w-12 lg:h-8 hover:scale-125 sm:hover:scale-150 transition-transform cursor-pointer" />
-            <img src={disk} alt="Disk Icon" className="w-3 h-4 sm:w-6 sm:h-5 md:w-8 md:h-6 lg:w-12 lg:h-8 hover:scale-125 sm:hover:scale-150 transition-transform cursor-pointer" />
-            <img src={comp} alt="Computer Icon" className="w-3 h-4 sm:w-6 sm:h-5 md:w-8 md:h-6 lg:w-12 lg:h-8 hover:scale-125 sm:hover:scale-150 transition-transform cursor-pointer" />
-            <img
-              src={code}
-              alt="Code Icon"
-              className="w-3 h-4 sm:w-6 sm:h-5 md:w-8 md:h-6 lg:w-12 lg:h-8 hover:scale-125 sm:hover:scale-150 transition-transform cursor-pointer"
-              onClick={() => setShowTerminal(true)}
-            />
+       { /* Retro Action Icons */}
+          <div className="flex-shrink-0">
+            <div className="flex items-center space-x-2 sm:space-x-4 md:space-x-6 lg:space-x-8 m-1 sm:m-2">
+              <img src={cd} alt="CD Icon" className="w-4 h-5 sm:w-6 sm:h-5 md:w-8 md:h-6 lg:w-12 lg:h-8 hover:scale-125 sm:hover:scale-150 transition-transform cursor-pointer" />
+              <img src={disk} alt="Disk Icon" className="w-4 h-5 sm:w-6 sm:h-5 md:w-8 md:h-6 lg:w-12 lg:h-8 hover:scale-125 sm:hover:scale-150 transition-transform cursor-pointer" />
+              <img src={comp} alt="Computer Icon" className="w-4 h-5 sm:w-6 sm:h-5 md:w-8 md:h-6 lg:w-12 lg:h-8 hover:scale-125 sm:hover:scale-150 transition-transform cursor-pointer" />
+              <img
+                src={code}
+                alt="Code Icon"
+                className="w-4 h-5 sm:w-6 sm:h-5 md:w-8 md:h-6 lg:w-12 lg:h-8 hover:scale-125 sm:hover:scale-150 transition-transform cursor-pointer"
+                onClick={() => setShowTerminal(true)}
+              />
+              {/* Extra icons for longer row */}
+              <img
+                src={cd}
+                alt="Extra CD Icon"
+                className="w-4 h-5 sm:w-6 sm:h-5 md:w-8 md:h-6 lg:w-12 lg:h-8 opacity-80 hover:scale-125 sm:hover:scale-150 transition-transform cursor-pointer"
+              />
+              <img
+                src={disk}
+                alt="Extra Disk Icon"
+                className="w-4 h-5 sm:w-6 sm:h-5 md:w-8 md:h-6 lg:w-12 lg:h-8 opacity-80 hover:scale-125 sm:hover:scale-150 transition-transform cursor-pointer"
+              />
+              <img
+                src={comp}
+                alt="Extra Computer Icon"
+                className="w-4 h-5 sm:w-6 sm:h-5 md:w-8 md:h-6 lg:w-12 lg:h-8 opacity-80 hover:scale-125 sm:hover:scale-150 transition-transform cursor-pointer"
+              />
+              <img
+                src={code}
+                alt="Extra Code Icon"
+                className="w-4 h-5 sm:w-6 sm:h-5 md:w-8 md:h-6 lg:w-12 lg:h-8 opacity-80 hover:scale-125 sm:hover:scale-150 transition-transform cursor-pointer"
+                onClick={() => setShowTerminal(true)}
+              />
+            </div>
           </div>
-        </div>
-      </div>
+              </div>
 
-      {/* Terminal Modal */}
+              {/* Terminal Modal */}
       {showTerminal && (
         <div className="fixed inset-0 flex items-center justify-center bg-black/40 z-100">
           <div className=" max-w-4xl w-full mx-4 p-1">
