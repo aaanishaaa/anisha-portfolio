@@ -132,11 +132,11 @@ export default function Projects({ onClose }) {
   }, [isDragging, dragOffset]);
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center sm:p-4 md:p-8">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 md:p-8">
       <div 
         className={`draggable-window retro-window bg-gradient-to-br from-gray-200 to-gray-300 border-4 border-gray-400 shadow-2xl ${
-          isMaximized ? 'w-full h-full' : 'w-[95%] max-w-xs sm:max-w-md md:max-w-4xl lg:max-w-6xl h-[90%] sm:h-[85%] md:h-[80%]'
-        } flex flex-col font-mono relative scanlines ${isDragging ? 'cursor-grabbing' : ''}`}
+          isMaximized ? 'w-full h-full' : 'w-full max-w-sm sm:max-w-md md:max-w-4xl lg:max-w-6xl h-[95vh] sm:h-[90vh] md:h-[85vh]'
+        } flex flex-col font-mono relative scanlines ${isDragging ? 'cursor-grabbing' : ''} max-h-screen overflow-hidden`}
         style={!isMaximized && !isDragging ? {} : !isMaximized ? {
           transform: `translate(${position.x}px, ${position.y}px)`
         } : {}}
@@ -189,19 +189,19 @@ export default function Projects({ onClose }) {
 
         {/* Tab Navigation */}
         <div className="bg-gray-200 border-b border-gray-400 px-2 sm:px-4 py-2">
-          <div className="flex space-x-1 overflow-x-auto">
+          <div className="flex space-x-1 overflow-x-auto scrollbar-hide">
             {categories.map((category) => (
               <button
                 key={category.id}
                 onClick={() => setActiveTab(category.id)}
-                className={`px-2 sm:px-4 py-2 border border-gray-400 text-xs sm:text-sm font-bold whitespace-nowrap ${
+                className={`px-2 sm:px-4 py-2 border border-gray-400 text-xs sm:text-sm font-bold whitespace-nowrap flex-shrink-0 ${
                   activeTab === category.id 
                     ? 'bg-white border-t-2 border-t-blue-500 -mb-px' 
                     : 'bg-gray-100 hover:bg-gray-200'
                 }`}
               >
                 <span className="mr-1 sm:mr-2">{category.icon}</span>
-                <span className="hidden sm:inline">{category.label}</span>
+                <span>{category.label}</span>
               </button>
             ))}
           </div>
@@ -209,16 +209,16 @@ export default function Projects({ onClose }) {
 
         {/* Content Area */}
         <div className="flex-1 p-3 sm:p-4 md:p-6 overflow-y-auto bg-white">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6">
             {filteredProjects.map((project) => (
-              <div key={project.id} className="border-2 border-gray-400 bg-gradient-to-br from-gray-50 to-gray-100 p-4 hover:shadow-lg transition-all duration-300">
+              <div key={project.id} className="border-2 border-gray-400 bg-gradient-to-br from-gray-50 to-gray-100 p-3 sm:p-4 hover:shadow-lg transition-all duration-300">
                 {/* Project Header */}
                 <div className="flex items-start justify-between mb-3">
                   <div className="flex items-center space-x-2">
-                    <span className="text-2xl">{project.icon}</span>
-                    <div>
-                      <h3 className="font-bold text-sm text-blue-800">{project.title}</h3>
-                      <span className={`text-xs px-2 py-1 rounded border ${
+                    <span className="text-xl sm:text-2xl">{project.icon}</span>
+                    <div className="min-w-0 flex-1">
+                      <h3 className="font-bold text-xs sm:text-sm text-blue-800 truncate">{project.title}</h3>
+                      <span className={`text-xs px-1 sm:px-2 py-1 rounded border inline-block mt-1 ${
                         project.status === 'Completed' 
                           ? 'bg-green-100 text-green-800 border-green-300' 
                           : 'bg-yellow-100 text-yellow-800 border-yellow-300'

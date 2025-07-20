@@ -63,23 +63,23 @@ export default function Contact({ onClose }) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4">
       <div 
-        className="bg-gray-100 border-2 border-gray-400 shadow-xl w-[95%] max-w-4xl font-mono select-none"
+        className="bg-gray-100 border-2 border-gray-400 shadow-xl w-full max-w-sm sm:max-w-md md:max-w-2xl lg:max-w-4xl font-mono select-none max-h-[95vh] overflow-hidden"
         style={{
           transform: `translate(${position.x}px, ${position.y}px)`,
         }}
       >
         {/* Title Bar */}
         <div 
-          className="bg-gradient-to-r from-blue-800 to-blue-900 px-8 py-4 border-b-2 border-gray-400 flex items-center justify-between cursor-move"
+          className="bg-gradient-to-r from-gray-200 to-gray-300 px-3 sm:px-4 py-2 border-b-2 border-gray-400 flex items-center justify-between cursor-move"
           onMouseDown={handleMouseDown}
         >
           <div className="flex items-center space-x-2">
             <div className="w-4 h-4 bg-blue-500 border border-gray-600 flex items-center justify-center">
               <Mail className="w-2 h-2 text-white" />
             </div>
-            <span className="text-sm font-bold text-white">Contact Me - Properties</span>
+            <span className="text-xs sm:text-sm font-bold text-gray-800">Contact Me - Properties</span>
           </div>
           <div className="flex space-x-1">
             <div className="w-4 h-4 bg-yellow-500 rounded-full border border-gray-500"></div>
@@ -93,9 +93,9 @@ export default function Contact({ onClose }) {
         </div>
 
         {/* Tabs */}
-        <div className="bg-gray-100 border-b border-gray-400 flex">
+        <div className="bg-gray-100 border-b border-gray-400 flex overflow-x-auto">
           <button
-            className={`px-4 py-2 text-xs font-bold border-r border-gray-400 ${
+            className={`px-2 sm:px-4 py-2 text-xs font-bold border-r border-gray-400 whitespace-nowrap flex-shrink-0 ${
               activeTab === 'contact' ? 'bg-white border-t-2 border-t-blue-500' : 'bg-gray-200 hover:bg-gray-50'
             }`}
             onClick={() => setActiveTab('contact')}
@@ -103,7 +103,7 @@ export default function Contact({ onClose }) {
             Contact Info
           </button>
           <button
-            className={`px-4 py-2 text-xs font-bold border-r border-gray-400 ${
+            className={`px-2 sm:px-4 py-2 text-xs font-bold border-r border-gray-400 whitespace-nowrap flex-shrink-0 ${
               activeTab === 'message' ? 'bg-white border-t-2 border-t-blue-500' : 'bg-gray-200 hover:bg-gray-50'
             }`}
             onClick={() => setActiveTab('message')}
@@ -111,7 +111,7 @@ export default function Contact({ onClose }) {
             Send Message
           </button>
           <button
-            className={`px-4 py-2 text-xs font-bold border-r border-gray-400 ${
+            className={`px-2 sm:px-4 py-2 text-xs font-bold border-r border-gray-400 whitespace-nowrap flex-shrink-0 ${
               activeTab === 'social' ? 'bg-white border-t-2 border-t-blue-500' : 'bg-gray-200 hover:bg-gray-50'
             }`}
             onClick={() => setActiveTab('social')}
@@ -121,7 +121,7 @@ export default function Contact({ onClose }) {
         </div>
 
         {/* Content */}
-        <div className="bg-white p-6 h-96 overflow-y-auto">
+        <div className="bg-white p-3 sm:p-6 h-64 sm:h-80 md:h-96 overflow-y-auto">
           {activeTab === 'contact' && (
             <div className="space-y-4">
               <h3 className="text-lg font-bold text-gray-800 mb-4">Contact Information</h3>
@@ -162,10 +162,10 @@ export default function Contact({ onClose }) {
 
           {activeTab === 'message' && (
             <div>
-              <h3 className="text-lg font-bold text-gray-800 mb-4">Send me a message</h3>
+              <h3 className="text-sm sm:text-lg font-bold text-gray-800 mb-4">Send me a message</h3>
               
               <form onSubmit={handleSubmit} className="space-y-4">
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div>
                     <label className="block text-xs font-bold text-gray-700 mb-1">Name:</label>
                     <input
@@ -173,7 +173,7 @@ export default function Contact({ onClose }) {
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
-                      className="w-full px-2 py-1 border border-gray-400 text-sm"
+                      className="w-full px-2 py-1 sm:py-2 border border-gray-400 text-sm"
                       required
                     />
                   </div>
@@ -184,7 +184,7 @@ export default function Contact({ onClose }) {
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
-                      className="w-full px-2 py-1 border border-gray-400 text-sm"
+                      className="w-full px-2 py-1 sm:py-2 border border-gray-400 text-sm"
                       required
                     />
                   </div>
@@ -197,7 +197,7 @@ export default function Contact({ onClose }) {
                     name="subject"
                     value={formData.subject}
                     onChange={handleChange}
-                    className="w-full px-2 py-1 border border-gray-400 text-sm"
+                    className="w-full px-2 py-1 sm:py-2 border border-gray-400 text-sm"
                     required
                   />
                 </div>
@@ -208,23 +208,23 @@ export default function Contact({ onClose }) {
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
-                    rows="4"
-                    className="w-full px-2 py-1 border border-gray-400 text-sm resize-none"
+                    rows="3"
+                    className="w-full px-2 py-1 sm:py-2 border border-gray-400 text-sm resize-none"
                     required
                   ></textarea>
                 </div>
                 
-                <div className="flex space-x-2">
+                <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2">
                   <button
                     type="submit"
-                    className="bg-gray-200 hover:bg-gray-300 border border-gray-400 px-4 py-1 text-sm font-bold"
+                    className="bg-gray-200 hover:bg-gray-300 border border-gray-400 px-4 py-2 text-sm font-bold w-full sm:w-auto"
                   >
                     Send Message
                   </button>
                   <button
                     type="button"
                     onClick={() => setFormData({ name: '', email: '', subject: '', message: '' })}
-                    className="bg-gray-200 hover:bg-gray-300 border border-gray-400 px-4 py-1 text-sm font-bold"
+                    className="bg-gray-200 hover:bg-gray-300 border border-gray-400 px-4 py-2 text-sm font-bold w-full sm:w-auto"
                   >
                     Clear
                   </button>

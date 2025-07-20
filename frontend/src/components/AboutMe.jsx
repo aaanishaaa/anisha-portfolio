@@ -71,15 +71,15 @@ const skills = [
     <div className={`fixed inset-0 z-50 ${isMaximized ? 'p-0' : 'p-2 sm:p-4 md:p-8 pointer-events-none'}`}>
       <div 
         className={`draggable-window retro-window bg-gradient-to-br from-gray-200 to-gray-300 border-4 border-gray-400 shadow-2xl ${
-          isMaximized ? 'w-full h-full' : 'w-full max-w-xs sm:max-w-md md:max-w-2xl lg:max-w-4xl h-4/5 sm:h-3/4 md:h-3/5'
-        } flex flex-col font-mono relative scanlines ${isDragging ? 'cursor-grabbing' : ''} pointer-events-auto`}
+          isMaximized ? 'w-full h-full' : 'w-full max-w-sm sm:max-w-md md:max-w-2xl lg:max-w-4xl h-[90vh] sm:h-4/5 md:h-3/4'
+        } flex flex-col font-mono relative scanlines ${isDragging ? 'cursor-grabbing' : ''} pointer-events-auto max-h-screen overflow-hidden`}
         style={!isMaximized ? {
           transform: `translate(${position.x}px, ${position.y}px)`,
           position: 'absolute',
           left: '50%',
           top: '50%',
-          marginLeft: '-26%',
-          marginTop: isMaximized ? '0' : '-17%'
+          marginLeft: '-50%',
+          marginTop: '-45%'
         } : {}}
       >
         
@@ -129,7 +129,7 @@ const skills = [
 
         {/* Tab Navigation */}
         <div className="bg-gray-200 border-b border-gray-400 px-2 sm:px-4 py-2">
-          <div className="flex space-x-1 overflow-x-auto">
+          <div className="flex space-x-1 overflow-x-auto scrollbar-hide">
             {[
               { id: 'bio', label: 'Bio', icon: '👤' },
               { id: 'skills', label: 'Skills', icon: '💻' },
@@ -139,14 +139,14 @@ const skills = [
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`px-2 sm:px-4 py-2 border border-gray-400 text-xs sm:text-sm font-bold whitespace-nowrap ${
+                className={`px-2 sm:px-4 py-2 border border-gray-400 text-xs sm:text-sm font-bold whitespace-nowrap flex-shrink-0 ${
                   activeTab === tab.id 
                     ? 'bg-white border-t-2 border-t-blue-500 -mb-px' 
                     : 'bg-gray-100 hover:bg-gray-200'
                 }`}
               >
                 <span className="mr-1 sm:mr-2">{tab.icon}</span>
-                <span className="hidden sm:inline">{tab.label}</span>
+                <span>{tab.label}</span>
               </button>
             ))}
           </div>

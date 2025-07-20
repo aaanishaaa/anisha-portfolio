@@ -74,20 +74,24 @@ export default function Window() {
           </div>
         </div>
             {showFolderPopup && (
-              <div className="fixed inset-0 z-50 flex items-center justify-center">
-                <div className="bg-white rounded-lg shadow-2xl p-4 sm:p-6 relative w-[90%] max-w-xs sm:max-w-md md:max-w-lg lg:max-w-2xl flex flex-col items-center">
+              <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+                <div className="bg-white rounded-lg shadow-2xl relative w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-2xl flex flex-col items-center max-h-[90vh] overflow-hidden">
                 <button
-                  className="absolute top-2 right-2 text-gray-500 hover:text-gray-700"
+                  className="absolute top-2 right-2 z-10 text-gray-500 hover:text-gray-700 bg-white rounded-full p-1"
                   onClick={() => setShowFolderPopup(false)}
                 >
-                  <X className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10" />
+                  <X className="w-4 h-4 sm:w-6 sm:h-6" />
                 </button>
-                <div className="mb-3 sm:mb-4 font-bold text-sm sm:text-base md:text-lg">Cato Folder</div>
-                <img
-                  src={cat}
-                  alt="Cato GIF"
-                  className="rounded-lg w-full h-full object-cover "
-                />
+                <div className="p-4 sm:p-6 w-full flex flex-col items-center">
+                  <div className="mb-3 sm:mb-4 font-bold text-sm sm:text-base md:text-lg text-center">Cato Folder</div>
+                  <div className="w-full max-h-[60vh] overflow-hidden rounded-lg">
+                    <img
+                      src={cat}
+                      alt="Cato GIF"
+                      className="w-full h-auto object-contain"
+                    />
+                  </div>
+                </div>
                 </div>
               </div>
             )}
