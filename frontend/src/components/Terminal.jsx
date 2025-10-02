@@ -76,16 +76,16 @@ const Terminal = ({ onClose }) => {
             case 'resume':
                 addLine('Accessing resume database...', 'info');
                 setTimeout(() => {
-                    addLine('Establishing secure connection...', 'normal');
+                    addLine('Opening PDF in new window...', 'normal');
                     setTimeout(() => {
                         addLine('Resume loaded successfully!', 'success');
-                        window.open('https://your-resume-website.com', '_blank');
+                        window.open('/AnishaR_resume%20(4).pdf', '_blank');
                     }, 800);
                 }, 1000);
                 break;
             case 'help':
                 addLine('Available commands:', 'info');
-                addLine('  resume  - Open resume webpage', 'normal');
+                addLine('  resume  - Open resume PDF', 'normal');
                 addLine('  help    - Show this help message', 'normal');
                 addLine('  status  - Show system status', 'normal');
                 addLine('  jedi   - Jedi archives', 'normal');

@@ -68,18 +68,13 @@ const skills = [
   }, [isDragging, dragOffset]);
 
   return (
-    <div className={`fixed inset-0 z-50 ${isMaximized ? 'p-0' : 'p-2 sm:p-4 md:p-8 pointer-events-none'}`}>
+    <div className={`fixed inset-0 z-50 ${isMaximized ? '' : 'flex items-center justify-center p-2 sm:p-4 md:p-8'}`}>
       <div 
         className={`draggable-window retro-window bg-gradient-to-br from-gray-200 to-gray-300 border-4 border-gray-400 shadow-2xl ${
           isMaximized ? 'w-full h-full' : 'w-full max-w-sm sm:max-w-md md:max-w-2xl lg:max-w-4xl h-[90vh] sm:h-4/5 md:h-3/4'
-        } flex flex-col font-mono relative scanlines ${isDragging ? 'cursor-grabbing' : ''} pointer-events-auto max-h-screen overflow-hidden`}
+        } flex flex-col font-mono relative scanlines ${isDragging ? 'cursor-grabbing' : ''} max-h-screen overflow-hidden`}
         style={!isMaximized ? {
           transform: `translate(${position.x}px, ${position.y}px)`,
-          position: 'absolute',
-          left: '50%',
-          top: '50%',
-          marginLeft: '-50%',
-          marginTop: '-45%'
         } : {}}
       >
         

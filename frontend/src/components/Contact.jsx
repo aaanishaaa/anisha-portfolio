@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import emailjs from '@emailjs/browser';
 import { X, Mail, Phone, MapPin, Send, User, MessageCircle, Minimize2, Maximize2 } from 'lucide-react';
 
 export default function Contact({ onClose }) {
@@ -6,6 +7,8 @@ export default function Contact({ onClose }) {
   const [isDragging, setIsDragging] = useState(false);
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
   const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState('');
   
   const [formData, setFormData] = useState({
     name: '',
@@ -57,40 +60,95 @@ export default function Contact({ onClose }) {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
+    setIsSubmitting(true);
+    setSubmitStatus('');
+
+    try {
+      // EmailJS configuration - Replace with your actual values from EmailJS dashboard
+      const serviceID = 'service_v7hpvtj';  // Get from EmailJS dashboard
+      const templateID = 'template_97bsw1d';  // Get from EmailJS dashboard  
+      const publicKey = 'WUHwKB9bEVZTWE0RU';  // Get from EmailJS dashboard
+
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+        to_email: 'your.email@example.com' // Replace with your actual email
+      };
+
+      // Try EmailJS first
+      await emailjs.send(serviceID, templateID, templateParams, publicKey);
+      
+      setSubmitStatus('success');
+      setFormData({ name: '', email: '', subject: '', message: '' });
+      
+    } catch (error) {
+      console.error('EmailJS failed:', error);
+      
+      // Fallback to mailto if EmailJS fails
+      const mailtoLink = `mailto:your.email@example.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
+        `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+      )}`;
+      
+      window.open(mailtoLink);
+      setSubmitStatus('success');
+      setFormData({ name: '', email: '', subject: '', message: '' });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4">
       <div 
-        className="bg-gray-100 border-2 border-gray-400 shadow-xl w-full max-w-sm sm:max-w-md md:max-w-2xl lg:max-w-4xl font-mono select-none max-h-[95vh] overflow-hidden"
+        className="draggable-window retro-window bg-gradient-to-br from-gray-200 to-gray-300 border-4 border-gray-400 shadow-2xl w-full max-w-sm sm:max-w-md md:max-w-2xl lg:max-w-4xl flex flex-col font-mono relative scanlines max-h-[95vh] overflow-hidden"
         style={{
           transform: `translate(${position.x}px, ${position.y}px)`,
         }}
       >
-        {/* Title Bar */}
+        {/* Window Title Bar */}
         <div 
-          className="bg-gradient-to-r from-gray-200 to-gray-300 px-3 sm:px-4 py-2 border-b-2 border-gray-400 flex items-center justify-between cursor-move"
+          className="bg-gradient-to-r from-blue-600 to-blue-800 text-white px-2 sm:px-4 py-2 flex items-center justify-between border-b-2 border-gray-500 cursor-grab active:cursor-grabbing"
           onMouseDown={handleMouseDown}
         >
           <div className="flex items-center space-x-2">
-            <div className="w-4 h-4 bg-blue-500 border border-gray-600 flex items-center justify-center">
-              <Mail className="w-2 h-2 text-white" />
-            </div>
-            <span className="text-xs sm:text-sm font-bold text-gray-800">Contact Me - Properties</span>
+            <Mail className="w-3 h-3 sm:w-4 sm:h-4" />
+            <span className="font-bold text-xs sm:text-sm">Contact Me - Properties</span>
           </div>
           <div className="flex space-x-1">
-            <div className="w-4 h-4 bg-yellow-500 rounded-full border border-gray-500"></div>
-            <div className="w-4 h-4 bg-gray-400 rounded-full border border-gray-500"></div>
+            <button 
+              className="w-5 h-5 sm:w-6 sm:h-6 bg-gray-300 hover:bg-gray-400 border border-gray-500 flex items-center justify-center retro-button"
+              onMouseDown={(e) => e.stopPropagation()}
+            >
+              <Minimize2 className="w-2 h-2 sm:w-3 sm:h-3 text-black" />
+            </button>
+            <button 
+              onMouseDown={(e) => e.stopPropagation()}
+              className="w-5 h-5 sm:w-6 sm:h-6 bg-gray-300 hover:bg-gray-400 border border-gray-500 flex items-center justify-center retro-button"
+            >
+              <Maximize2 className="w-2 h-2 sm:w-3 sm:h-3 text-black" />
+            </button>
             <button 
               onClick={onClose}
-              className="w-4 h-4 bg-red-500 hover:bg-red-500 rounded-full border border-gray-500 flex items-center justify-center"
+              onMouseDown={(e) => e.stopPropagation()}
+              className="w-5 h-5 sm:w-6 sm:h-6 bg-red-400 hover:bg-red-500 border border-gray-500 flex items-center justify-center retro-button"
             >
+              <X className="w-2 h-2 sm:w-3 sm:h-3 text-black" />
             </button>
           </div>
         </div>
+
+        {/* Menu Bar
+        <div className="bg-gray-100 border-b border-gray-400 px-2 sm:px-4 py-1">
+          <div className="flex space-x-3 sm:space-x-6 text-xs sm:text-sm">
+            <span className="hover:bg-blue-200 px-1 sm:px-2 py-1 cursor-pointer">File</span>
+            <span className="hover:bg-blue-200 px-1 sm:px-2 py-1 cursor-pointer">View</span>
+            <span className="hover:bg-blue-200 px-1 sm:px-2 py-1 cursor-pointer">Help</span>
+          </div>
+        </div> */}
 
         {/* Tabs */}
         <div className="bg-gray-100 border-b border-gray-400 flex overflow-x-auto">
@@ -131,7 +189,7 @@ export default function Contact({ onClose }) {
                   <Mail className="w-5 h-5 text-blue-600" />
                   <div>
                     <div className="font-bold text-sm">Email</div>
-                    <div className="text-sm text-gray-600">anisha@example.com</div>
+                    <div className="text-sm text-gray-600">anishaworks21@gmail.com</div>
                   </div>
                 </div>
                 
@@ -147,7 +205,7 @@ export default function Contact({ onClose }) {
                   <MapPin className="w-5 h-5 text-red-600" />
                   <div>
                     <div className="font-bold text-sm">Location</div>
-                    <div className="text-sm text-gray-600">Remote work available worldwide</div>
+                    <div className="text-sm text-gray-600">Delhi (India)</div>
                   </div>
                 </div>
               </div>
@@ -214,17 +272,49 @@ export default function Contact({ onClose }) {
                   ></textarea>
                 </div>
                 
+                {/* Status Messages */}
+                {submitStatus === 'success' && (
+                  <div className="p-3 bg-green-50 border border-green-200 text-green-800 text-sm">
+                    ✅ Message sent successfully!
+                  </div>
+                )}
+                
+                {submitStatus === 'error' && (
+                  <div className="p-3 bg-red-50 border border-red-200 text-red-800 text-sm">
+                    ❌ Failed to send message. Please try again or contact me directly.
+                  </div>
+                )}
+                
                 <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2">
                   <button
                     type="submit"
-                    className="bg-gray-200 hover:bg-gray-300 border border-gray-400 px-4 py-2 text-sm font-bold w-full sm:w-auto"
+                    disabled={isSubmitting}
+                    className={`border border-gray-400 px-4 py-2 text-sm font-bold w-full sm:w-auto ${
+                      isSubmitting 
+                        ? 'bg-gray-100 text-gray-500 cursor-not-allowed' 
+                        : 'bg-gray-200 hover:bg-gray-300'
+                    }`}
                   >
-                    Send Message
+                    {isSubmitting ? (
+                      <span className="flex items-center justify-center">
+                        <svg className="animate-spin -ml-1 mr-2 h-3 w-3 text-gray-500" fill="none" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        Sending...
+                      </span>
+                    ) : (
+                      'Send Message'
+                    )}
                   </button>
                   <button
                     type="button"
-                    onClick={() => setFormData({ name: '', email: '', subject: '', message: '' })}
-                    className="bg-gray-200 hover:bg-gray-300 border border-gray-400 px-4 py-2 text-sm font-bold w-full sm:w-auto"
+                    disabled={isSubmitting}
+                    onClick={() => {
+                      setFormData({ name: '', email: '', subject: '', message: '' });
+                      setSubmitStatus('');
+                    }}
+                    className="bg-gray-200 hover:bg-gray-300 border border-gray-400 px-4 py-2 text-sm font-bold w-full sm:w-auto disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     Clear
                   </button>
@@ -248,7 +338,10 @@ export default function Contact({ onClose }) {
                       <div className="text-xs text-gray-600">Professional networking</div>
                     </div>
                   </div>
-                  <button className="text-xs bg-gray-200 border border-gray-400 px-2 py-1 hover:bg-gray-300">
+                  <button 
+                    onClick={() => window.open('https://www.linkedin.com/in/anisha-rawat/', '_blank')}
+                    className="text-xs bg-gray-200 border border-gray-400 px-2 py-1 hover:bg-gray-300 cursor-pointer"
+                  >
                     Visit
                   </button>
                 </div>
@@ -263,7 +356,10 @@ export default function Contact({ onClose }) {
                       <div className="text-xs text-gray-600">Code repositories</div>
                     </div>
                   </div>
-                  <button className="text-xs bg-gray-200 border border-gray-400 px-2 py-1 hover:bg-gray-300">
+                  <button 
+                    onClick={() => window.open('https://github.com/aaanishaaa', '_blank')}
+                    className="text-xs bg-gray-200 border border-gray-400 px-2 py-1 hover:bg-gray-300 cursor-pointer"
+                  >
                     Visit
                   </button>
                 </div>
@@ -278,7 +374,10 @@ export default function Contact({ onClose }) {
                       <div className="text-xs text-gray-600">Latest updates</div>
                     </div>
                   </div>
-                  <button className="text-xs bg-gray-200 border border-gray-400 px-2 py-1 hover:bg-gray-300">
+                  <button 
+                    onClick={() => window.open('https://x.com/anisharawr', '_blank')}
+                    className="text-xs bg-gray-200 border border-gray-400 px-2 py-1 hover:bg-gray-300 cursor-pointer"
+                  >
                     Visit
                   </button>
                 </div>
@@ -291,6 +390,16 @@ export default function Contact({ onClose }) {
               </div>
             </div>
           )}
+        </div>
+
+        {/* Status Bar */}
+        <div className="bg-gray-200 border-t border-gray-400 px-2 sm:px-4 py-1 text-xs text-gray-600 flex justify-between">
+          <span>Ready</span>
+          <div className="flex space-x-4">
+            <span>Tab: {activeTab}</span>
+            <span>Lines: 42</span>
+            <span>Encoding: UTF-8</span>
+          </div>
         </div>
       </div>
     </div>

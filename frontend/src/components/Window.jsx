@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { X, AlertCircle, Folder, Search, Palette, Settings } from 'lucide-react';
-import cat from '../assets/elements/cat.gif';
 import folder from '../assets/icons/folder.png';
 import me from '../assets/elements/me.png';
 import contacts from '../assets/icons/contacts.png';
@@ -10,7 +9,6 @@ import Contact from './Contact';
 export default function Window() {
   const [showCreativityError, setShowCreativityError] = useState(true);
   const [showConcentrationError, setShowConcentrationError] = useState(true);
-  const [showFolderPopup, setShowFolderPopup] = useState(false);
   const [showAboutMe, setShowAboutMe] = useState(false);
   const [showProjects, setShowProjects] = useState(false);
   const [showContactMe, setShowContactMe] = useState(false);
@@ -41,18 +39,6 @@ export default function Window() {
         {/* Content layer */}
         <div className="relative z-10">
         <div className="absolute left-2 sm:left-4 md:left-8 top-4 sm:top-6 md:top-8 space-y-3 sm:space-y-4 md:space-y-6">
-          {/* Folder Icon with Popup */}
-          <div className="flex flex-col items-center space-y-1 sm:space-y-2 w-12 sm:w-16 md:w-20">
-            <div
-            className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 cursor-pointer mb-2 sm:mb-3 hover:scale-110 transition-transform duration-300"
-            onClick={() => setShowFolderPopup(true)}
-            >
-            <img src={folder} onClick={() => setShowFolderPopup(true)} />
-            </div>
-            <span className="text-xs text-gray-700 text-center">Cato</span>
-          </div>
-
-
           <div className="flex flex-col items-center space-y-1 sm:space-y-2 w-12 sm:w-16 md:w-20">
             <div 
               className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 mb-8 sm:mb-10 md:mb-12 hover:scale-110 transition-transform duration-300 cursor-pointer"
@@ -73,28 +59,6 @@ export default function Window() {
             <span className="text-xs text-gray-700 text-center">Projects</span>
           </div>
         </div>
-            {showFolderPopup && (
-              <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-                <div className="bg-white rounded-lg shadow-2xl relative w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-2xl flex flex-col items-center max-h-[90vh] overflow-hidden">
-                <button
-                  className="absolute top-2 right-2 z-10 text-gray-500 hover:text-gray-700 bg-white rounded-full p-1"
-                  onClick={() => setShowFolderPopup(false)}
-                >
-                  <X className="w-4 h-4 sm:w-6 sm:h-6" />
-                </button>
-                <div className="p-4 sm:p-6 w-full flex flex-col items-center">
-                  <div className="mb-3 sm:mb-4 font-bold text-sm sm:text-base md:text-lg text-center">Cato Folder</div>
-                  <div className="w-full max-h-[60vh] overflow-hidden rounded-lg">
-                    <img
-                      src={cat}
-                      alt="Cato GIF"
-                      className="w-full h-auto object-contain"
-                    />
-                  </div>
-                </div>
-                </div>
-              </div>
-            )}
 
             {/* Right side icons */}
       <div className="absolute right-2 sm:right-4 md:right-8 top-20 sm:top-24 md:top-32 space-y-3 sm:space-y-4 md:space-y-6">
