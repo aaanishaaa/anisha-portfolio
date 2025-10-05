@@ -3,15 +3,18 @@ import { X, AlertCircle, Folder, Search, Palette, Settings } from 'lucide-react'
 import folder from '../assets/icons/folder.png';
 import me from '../assets/elements/me.png';
 import contacts from '../assets/icons/contacts.png';
+import game from '../assets/icons/game.png';
 import AboutMe from './AboutMe';
 import Projects from './Projects';
 import Contact from './Contact';
+import GetToKnow from './Gettoknow';
 export default function Window() {
   const [showCreativityError, setShowCreativityError] = useState(true);
   const [showConcentrationError, setShowConcentrationError] = useState(true);
   const [showAboutMe, setShowAboutMe] = useState(false);
   const [showProjects, setShowProjects] = useState(false);
   const [showContactMe, setShowContactMe] = useState(false);
+  const [showGetToKnow, setShowGetToKnow] = useState(false);
 // const [notifications, setNotifications] = useState([
 //   { id: 1, user: 'Versus Bot', message: 'You’ve been challenged to a 1v1 DSA duel!', type: 'less go Battle Mode', avatar: '🕹️' },
 //   { id: 2, user: 'HeartByte Core', message: '99% model accuracy achieved on test set!', type: 'Niceee', avatar: '❤️' },
@@ -57,6 +60,16 @@ export default function Window() {
              <img src={folder}/>
             </div>
             <span className="text-xs text-gray-700 text-center">Projects</span>
+          </div>
+
+          <div className="flex flex-col items-center space-y-1 sm:space-y-2 w-12 sm:w-16 md:w-20">
+            <div 
+              className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 mb-1 sm:mb-2 md:mb-3 hover:scale-110 transition-transform duration-300 cursor-pointer"
+              onClick={() => setShowGetToKnow(true)}
+            >
+             <img src={game} alt="Get to Know Me"/>
+            </div>
+            <span className="text-xs text-gray-700 text-center">Get to Know Me</span>
           </div>
         </div>
 
@@ -193,6 +206,11 @@ export default function Window() {
       {/* Contact Me Component */}
       {showContactMe && (
         <Contact onClose={() => setShowContactMe(false)} />
+      )}
+
+      {/* Get to Know Me Game Component */}
+      {showGetToKnow && (
+        <GetToKnow onClose={() => setShowGetToKnow(false)} />
       )}
       
       </div> {/* Close content layer */}
