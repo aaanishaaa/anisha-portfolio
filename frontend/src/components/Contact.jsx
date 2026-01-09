@@ -236,7 +236,7 @@ export default function Contact({ onClose }) {
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-bold text-gray-700 mb-1">Email:</label>
+                    <label className="block text-xs font-bold text-gray-700 mb-1">Your Email (i will reply for sure):</label>
                     <input
                       type="email"
                       name="email"

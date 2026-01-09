@@ -39,48 +39,12 @@ export default function Projects({ onClose }) {
       category: "game",
       description: "Competitive coding challenge platform with real-time battles",
       tech: ["Node.js", "Socket.io", "MongoDB", "React"],
-      status: "Completed",
+      status: "In Ideation",
       icon: "🕹️",
       github: "https://github.com/aaanishaaa/versus-bot",
       demo: "https://versus-bot.com",
       screenshot: "/me2.png"
     },
-    // {
-    //   id: 4,
-    //   title: "Data Visualization Dashboard",
-    //   category: "data",
-    //   description: "Interactive dashboard for analyzing complex datasets",
-    //   tech: ["D3.js", "Python", "PostgreSQL", "Vue.js"],
-    //   status: "Completed",
-    //   icon: "📊",
-    //   github: "https://github.com/aaanishaaa/data-viz",
-    //   demo: "https://data-viz-demo.com",
-    //   screenshot: "/me2.png"
-    // },
-    // {
-    //   id: 5,
-    //   title: "Mobile Weather App",
-    //   category: "mobile",
-    //   description: "Beautiful weather app with location-based forecasts",
-    //   tech: ["React Native", "API Integration", "Redux"],
-    //   status: "Completed",
-    //   icon: "🌤️",
-    //   github: "https://github.com/aaanishaaa/weather-app",
-    //   demo: "https://weather-app-demo.com",
-    //   screenshot: "/me2.png"
-    // },
-    // {
-    //   id: 6,
-    //   title: "E-commerce Platform",
-    //   category: "web",
-    //   description: "Full-stack e-commerce solution with payment integration",
-    //   tech: ["Next.js", "Stripe", "Prisma", "PostgreSQL"],
-    //   status: "In Progress",
-    //   icon: "🛒",
-    //   github: "https://github.com/aaanishaaa/ecommerce",
-    //   demo: "https://ecommerce-demo.com",
-    //   screenshot: "/me2.png"
-    // }
   ];
 
   const categories = [
@@ -176,16 +140,6 @@ export default function Projects({ onClose }) {
             </button>
           </div>
         </div>
-
-        {/* Menu Bar */}
-        {/* <div className="bg-gray-100 border-b border-gray-400 px-2 sm:px-4 py-1">
-          <div className="flex space-x-3 sm:space-x-6 text-xs sm:text-sm">
-            <span className="hover:bg-blue-200 px-1 sm:px-2 py-1 cursor-pointer">File</span>
-            <span className="hover:bg-blue-200 px-1 sm:px-2 py-1 cursor-pointer">View</span>
-            <span className="hover:bg-blue-200 px-1 sm:px-2 py-1 cursor-pointer">Filter</span>
-            <span className="hover:bg-blue-200 px-1 sm:px-2 py-1 cursor-pointer">Help</span>
-          </div>
-        </div> */}
 
         {/* Tab Navigation */}
         <div className="bg-gray-200 border-b border-gray-400 px-2 sm:px-4 py-2">

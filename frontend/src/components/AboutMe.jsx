@@ -20,11 +20,9 @@ const skills = [
   { name: 'C++', level: 70, color: '#00599C' },
   { name: 'Flask / Django', level: 60, color: '#000000' },
 ];
-
-
   const hobbies = [
     { icon: '🎮', name: 'Gaming', description: 'Love retro and indie games' },
-    { icon: '🎵', name: 'Music', description: 'Synthwave and lo-fi enthusiast' },
+    { icon: '🎵', name: 'Music', description: 'Pop and 70s music' },
     { icon: '☕', name: 'Coffee', description: 'Fuel for coding sessions' },
     { icon: '📚', name: 'Reading', description: 'Sci-fi and tech books' },
     { icon: '🎨', name: 'Painting', description: 'Oil Painting and Sketches' },
@@ -53,7 +51,6 @@ const skills = [
     setIsDragging(false);
   };
 
-  // Add event listeners for mouse move and up
   React.useEffect(() => {
     if (isDragging) {
       document.addEventListener('mousemove', handleMouseMove);
@@ -173,7 +170,7 @@ const skills = [
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                     <div className="border-2 border-gray-400 p-2 sm:p-3 bg-yellow-50">
                       <h3 className="font-bold text-xs sm:text-sm mb-2">📍 Location</h3>
-                      <p className="text-xs">Somewhere on Earth</p>
+                      <p className="text-xs">Noida</p>
                     </div>
                     <div className="border-2 border-gray-400 p-2 sm:p-3 bg-green-50">
                       <h3 className="font-bold text-xs sm:text-sm mb-2">🎓 Education</h3>
@@ -181,7 +178,7 @@ const skills = [
                     </div>
                     <div className="border-2 border-gray-400 p-2 sm:p-3 bg-blue-50">
                       <h3 className="font-bold text-xs sm:text-sm mb-2">💼 Role</h3>
-                      <p className="text-xs">Frontend Developer</p>
+                      <p className="text-xs">Software Developer</p>
                     </div>
                     <div className="border-2 border-gray-400 p-2 sm:p-3 bg-purple-50">
                       <h3 className="font-bold text-xs sm:text-sm mb-2">🌟 Passion</h3>
@@ -221,7 +218,7 @@ const skills = [
               <div className="border-2 border-gray-400 p-3 sm:p-4 bg-yellow-50 mt-6">
                 <h3 className="font-bold text-xs sm:text-sm mb-2">🛠️ Tools & Technologies</h3>
                 <div className="flex flex-wrap gap-1 sm:gap-2">
-                  {['VS Code', 'Git', 'Figma', 'Photoshop', 'Webpack', 'Vite', 'MongoDB', 'PostgreSQL'].map((tool) => (
+                  {['VS Code', 'Git', 'Figma', 'Photoshop', 'Webpack', 'Vite', 'MongoDB', 'PostgreSQL','.NET','ReactJs'].map((tool) => (
                     <span key={tool} className="px-1 sm:px-2 py-1 bg-white border border-gray-400 text-xs font-bold">
                       {tool}
                     </span>
@@ -266,7 +263,7 @@ const skills = [
                 <div className="space-y-3 sm:space-y-4">
                   <div className="border-2 border-gray-400 p-3 sm:p-4 bg-gradient-to-r from-blue-50 to-cyan-50">
                     <h3 className="font-bold text-xs sm:text-sm mb-2">📧 Email</h3>
-                    <p className="text-xs break-all">anishaworks21@example.com</p>
+                    <p className="text-xs break-all">anishaworks21@gmail.com</p>
                   </div>
                   
                   <div className="border-2 border-gray-400 p-3 sm:p-4 bg-gradient-to-r from-purple-50 to-pink-50">
