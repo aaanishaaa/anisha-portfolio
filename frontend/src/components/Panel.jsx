@@ -24,7 +24,7 @@ function Panel() {
       <div className="flex items-center justify-between space-x-1 sm:space-x-2 md:space-x-3 lg:space-x-4 relative z-20 w-full max-w-7xl px-2 sm:px-3 md:px-4 lg:px-6">
         {/* Grid Icon */}
         <div className="flex-shrink-0">
-          <div className="bg-white p-1 sm:p-1.5 md:p-2 lg:p-2.5 rounded-md shadow-md hover:shadow-lg cursor-pointer border border-gray-200 hover:scale-110 transition-transform duration-200">
+          <div className="bg-white p-1 sm:p-1.5 md:p-2 lg:p-2.5 rounded-sm shadow-md hover:shadow-lg cursor-pointer border border-gray-200 hover:scale-110 transition-transform duration-200">
             <svg className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 text-orange-500" viewBox="0 0 24 24" fill="currentColor">
               <rect x="2" y="2" width="8" height="8" rx="2" />
               <rect x="14" y="2" width="8" height="8" rx="2" />
